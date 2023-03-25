@@ -113,6 +113,7 @@ final class Query extends AbstractQuery
     public const HINT_READ_ONLY = 'doctrine.readOnly';
 
     public const HINT_INTERNAL_ITERATION = 'doctrine.internal.iteration';
+    public const ITERATION_ALLOW_TO_MANY = 'doctrine.iteration.allow.to_many';
 
     public const HINT_LOCK_MODE = 'doctrine.lockMode';
 

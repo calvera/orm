@@ -1020,7 +1020,7 @@ class SqlWalker implements TreeWalker
         $assoc = ! $relation['isOwningSide'] ? $targetClass->associationMappings[$relation['mappedBy']] : $relation;
 
         if ($this->query->getHint(Query::HINT_INTERNAL_ITERATION) === true && (! $this->query->getHint(self::HINT_DISTINCT) || isset($this->selectedClasses[$joinedDqlAlias]))) {
-            if ($relation['type'] === ClassMetadata::ONE_TO_MANY || $relation['type'] === ClassMetadata::MANY_TO_MANY) {
+            if ($this->query->getHint(Query::ITERATION_ALLOW_TO_MANY) === false && ($relation['type'] === ClassMetadata::ONE_TO_MANY || $relation['type'] === ClassMetadata::MANY_TO_MANY)) {
                 throw QueryException::iterateWithFetchJoinNotAllowed($assoc);
             }
         }
